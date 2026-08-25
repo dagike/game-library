@@ -12,7 +12,20 @@ This app is being built incrementally — see the project plan for the full mile
 
 ```bash
 npm install
+cp .env.example .env.local   # then fill in DATABASE_URL (see below)
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it.
+
+## Database (Neon)
+
+1. Create a free project at [neon.tech](https://neon.tech).
+2. Copy the connection string from the Neon dashboard and set it as `DATABASE_URL` in `.env.local`.
+3. Apply the schema:
+
+   ```bash
+   npx drizzle-kit migrate
+   ```
+
+Schema lives in `lib/db/schema.ts`; migrations are generated with `npx drizzle-kit generate` and committed to `drizzle/`.
