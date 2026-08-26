@@ -3,18 +3,24 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getGameBySlug } from "@/lib/games/getGameBySlug";
 import { getCurrentUser } from "@/lib/auth/current-user";
+import { getCommentsForGame } from "@/lib/comments/getCommentsForGame";
 import { StarRating } from "@/components/StarRating";
+import { CommentForm } from "@/components/CommentForm";
+import { CommentList } from "@/components/CommentList";
 
 export default async function GamePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ commentError?: string }>;
 }) {
   const { slug } = await params;
   const game = await getGameBySlug(slug);
   if (!game) notFound();
 
-  const user = await getCurrentUser();
+  const { commentError } = await searchParams;
+  const [user, comments] = await Promise.all([getCurrentUser(), getCommentsForGame(game.id)]);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-10">
@@ -84,6 +90,14 @@ export default async function GamePage({
           </p>
         </div>
       )}
+
+      <div className="flex flex-col gap-4 border-t border-gray-200 pt-6 dark:border-gray-800">
+        <h2 className="text-lg font-medium">Comments</h2>
+        <CommentList comments={comments} />
+        <div className="relative">
+          <CommentForm gameId={game.id} gameSlug={game.slug} error={commentError} />
+        </div>
+      </div>
     </main>
   );
 }
