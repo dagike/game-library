@@ -6,8 +6,6 @@ A personal web app for showing off favorite game titles: a public list of quick-
 - **Game data**: imported from the [RAWG API](https://rawg.io/apidocs) rather than typed in by hand.
 - **Access**: anyone can browse and comment; only the site owner (a single seeded account) can add/edit/delete games.
 
-This app is being built incrementally — see the project plan for the full milestone breakdown. Setup instructions (database, RAWG key, owner account) will be added here as those pieces land.
-
 ## Getting Started
 
 ```bash
@@ -41,3 +39,20 @@ OWNER_EMAIL=you@example.com OWNER_PASSWORD=choose-a-strong-password npm run seed
 ```
 
 Then sign in at `/login`. Authenticated requests can reach `/admin/*`; everyone else is redirected to `/login`.
+
+## RAWG API
+
+Games are added by searching [RAWG](https://rawg.io/apidocs) and importing a title's data, rather than typed in by hand.
+
+1. Create a free RAWG account and grab an API key from [rawg.io/apidocs](https://rawg.io/apidocs).
+2. Set it as `RAWG_API_KEY` in `.env.local`. It's server-only — never exposed to the browser.
+
+## Deploying (Vercel)
+
+1. Push this repo to GitHub, then import it into [Vercel](https://vercel.com/new).
+2. In the Vercel project's Environment Variables settings, add `DATABASE_URL` (your Neon connection string), `RAWG_API_KEY`, and `SESSION_SECRET` — same values as `.env.local`.
+3. Deploy. Vercel runs `npm run build` automatically.
+4. Apply the schema to the production database once (from your machine, with `DATABASE_URL` pointed at the Neon prod branch): `npx drizzle-kit migrate`.
+5. Run `npm run seed:owner` once (locally, pointed at the prod `DATABASE_URL`) to create your owner login on the production database.
+
+After deploying, smoke-test the live site: browse the list page, open a game's detail page, log in, add a game, and post a comment.
