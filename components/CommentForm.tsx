@@ -48,7 +48,7 @@ export function CommentForm({
 
       <button
         type="submit"
-        className="w-fit rounded bg-gray-900 px-4 py-2 text-sm text-white dark:bg-gray-100 dark:text-gray-900"
+        className="w-fit rounded bg-primary-600 px-4 py-2 text-sm text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400"
       >
         Post comment
       </button>

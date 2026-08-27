@@ -17,7 +17,10 @@ export default async function AdminPage() {
     <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-4 px-4 py-10">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Admin</h1>
-        <Link href="/" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+        <Link
+          href="/"
+          className="text-sm text-gray-500 transition-colors hover:text-primary-600 hover:underline dark:text-gray-400 dark:hover:text-primary-400"
+        >
           ← Back to library
         </Link>
       </div>
@@ -26,7 +29,7 @@ export default async function AdminPage() {
       <div className="flex gap-2">
         <Link
           href="/admin/games/new"
-          className="rounded bg-gray-900 px-3 py-2 text-center text-sm text-white dark:bg-gray-100 dark:text-gray-900"
+          className="rounded bg-primary-600 px-3 py-2 text-center text-sm text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400"
         >
           Add a game
         </Link>
@@ -46,7 +49,10 @@ export default async function AdminPage() {
             {allGames.map((game) => (
               <li key={game.id} className="flex items-center justify-between gap-4 py-2">
                 <div className="flex flex-col">
-                  <Link href={`/games/${game.slug}`} className="text-sm hover:underline">
+                  <Link
+                    href={`/games/${game.slug}`}
+                    className="text-sm transition-colors hover:text-primary-600 hover:underline dark:hover:text-primary-400"
+                  >
                     {game.title}
                   </Link>
                   <StarRating rating={game.starRating} />

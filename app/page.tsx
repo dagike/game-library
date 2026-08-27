@@ -36,11 +36,17 @@ export default async function Home({
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Game Library</h1>
         {user ? (
-          <Link href="/admin" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+          <Link
+            href="/admin"
+            className="text-sm text-gray-500 transition-colors hover:text-primary-600 hover:underline dark:text-gray-400 dark:hover:text-primary-400"
+          >
             Admin
           </Link>
         ) : (
-          <Link href="/login" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+          <Link
+            href="/login"
+            className="text-sm text-gray-500 transition-colors hover:text-primary-600 hover:underline dark:text-gray-400 dark:hover:text-primary-400"
+          >
             Sign in
           </Link>
         )}

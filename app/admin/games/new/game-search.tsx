@@ -50,7 +50,7 @@ export function GameSearch() {
         <button
           type="submit"
           disabled={loading}
-          className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50 dark:bg-gray-100 dark:text-gray-900"
+          className="rounded bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700 disabled:opacity-50 dark:bg-primary-500 dark:hover:bg-primary-400"
         >
           {loading ? "Searching..." : "Search"}
         </button>
@@ -86,7 +86,7 @@ export function GameSearch() {
               <input type="hidden" name="rawgId" value={result.id} />
               <button
                 type="submit"
-                className="rounded border border-gray-300 px-3 py-1.5 text-sm dark:border-gray-700"
+                className="rounded border border-primary-300 px-3 py-1.5 text-sm text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-800 dark:text-primary-400 dark:hover:bg-primary-950"
               >
                 Add
               </button>

@@ -14,7 +14,7 @@ export function GameCard({ game }: { game: Game }) {
   return (
     <Link
       href={`/games/${game.slug}`}
-      className="group flex flex-col overflow-hidden rounded border border-gray-200 transition hover:border-gray-400 dark:border-gray-800 dark:hover:border-gray-600"
+      className="group flex flex-col overflow-hidden rounded border border-gray-200 transition-colors hover:border-primary-400 dark:border-gray-800 dark:hover:border-primary-600"
     >
       <div className="relative aspect-[2/3] w-full bg-gray-100 dark:bg-gray-900">
         {game.coverImageUrl ? (
@@ -33,7 +33,9 @@ export function GameCard({ game }: { game: Game }) {
         )}
       </div>
       <div className="flex flex-col gap-1 p-3">
-        <p className="font-medium group-hover:underline">{game.title}</p>
+        <p className="font-medium transition-colors group-hover:text-primary-600 dark:group-hover:text-primary-400">
+          {game.title}
+        </p>
         <StarRating rating={game.starRating} />
       </div>
     </Link>

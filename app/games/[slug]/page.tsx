@@ -24,7 +24,10 @@ export default async function GamePage({
 
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-10">
-      <Link href="/" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+      <Link
+        href="/"
+        className="text-sm text-gray-500 transition-colors hover:text-primary-600 hover:underline dark:text-gray-400 dark:hover:text-primary-400"
+      >
         ← Back to library
       </Link>
 
