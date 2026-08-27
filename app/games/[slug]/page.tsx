@@ -93,7 +93,7 @@ export default async function GamePage({
 
       <div className="flex flex-col gap-4 border-t border-gray-200 pt-6 dark:border-gray-800">
         <h2 className="text-lg font-medium">Comments</h2>
-        <CommentList comments={comments} />
+        <CommentList comments={comments} gameSlug={game.slug} canModerate={Boolean(user)} />
         <div className="relative">
           <CommentForm gameId={game.id} gameSlug={game.slug} error={commentError} />
         </div>
