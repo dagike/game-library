@@ -47,10 +47,17 @@ Games are added by searching [RAWG](https://rawg.io/apidocs) and importing a tit
 1. Create a free RAWG account and grab an API key from [rawg.io/apidocs](https://rawg.io/apidocs).
 2. Set it as `RAWG_API_KEY` in `.env.local`. It's server-only — never exposed to the browser.
 
+## Box art (SteamGridDB)
+
+RAWG only provides promo screenshots, not real box/case art. Cover images are fetched from [SteamGridDB](https://www.steamgriddb.com/) instead, falling back to RAWG's image when there's no match.
+
+1. Create a free account and grab an API key from [steamgriddb.com/profile/preferences/api](https://www.steamgriddb.com/profile/preferences/api).
+2. Set it as `STEAMGRIDDB_API_KEY` in `.env.local`. Optional — if unset, games just use RAWG's image.
+
 ## Deploying (Vercel)
 
 1. Push this repo to GitHub, then import it into [Vercel](https://vercel.com/new).
-2. In the Vercel project's Environment Variables settings, add `DATABASE_URL` (your Neon connection string), `RAWG_API_KEY`, and `SESSION_SECRET` — same values as `.env.local`.
+2. In the Vercel project's Environment Variables settings, add `DATABASE_URL` (your Neon connection string), `RAWG_API_KEY`, `STEAMGRIDDB_API_KEY`, and `SESSION_SECRET` — same values as `.env.local`.
 3. Deploy. Vercel runs `npm run build` automatically.
 4. Apply the schema to the production database once (from your machine, with `DATABASE_URL` pointed at the Neon prod branch): `npx drizzle-kit migrate`.
 5. Run `npm run seed:owner` once (locally, pointed at the prod `DATABASE_URL`) to create your owner login on the production database.

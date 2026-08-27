@@ -16,7 +16,7 @@ export function GameCard({ game }: { game: Game }) {
       href={`/games/${game.slug}`}
       className="group flex flex-col overflow-hidden rounded border border-gray-200 transition hover:border-gray-400 dark:border-gray-800 dark:hover:border-gray-600"
     >
-      <div className="relative aspect-[16/9] w-full bg-gray-100 dark:bg-gray-900">
+      <div className="relative aspect-[2/3] w-full bg-gray-100 dark:bg-gray-900">
         {game.coverImageUrl ? (
           <Image
             src={game.coverImageUrl}

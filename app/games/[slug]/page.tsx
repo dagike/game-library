@@ -29,7 +29,7 @@ export default async function GamePage({
       </Link>
 
       {game.coverImageUrl && (
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded bg-gray-100 dark:bg-gray-900">
+        <div className="relative aspect-[2/3] w-full max-w-xs overflow-hidden rounded bg-gray-100 dark:bg-gray-900">
           <Image src={game.coverImageUrl} alt={game.title} fill unoptimized className="object-cover" />
         </div>
       )}

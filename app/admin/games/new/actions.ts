@@ -7,6 +7,7 @@ import { games } from "@/lib/db/schema";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { getGameById } from "@/lib/rawg";
 import { mapRawgToGame } from "@/lib/games/mapRawgToGame";
+import { getBoxArtUrl } from "@/lib/steamgriddb";
 
 export async function addGame(formData: FormData) {
   const user = await getCurrentUser();
@@ -24,6 +25,10 @@ export async function addGame(formData: FormData) {
 
   const detail = await getGameById(rawgId);
   const newGame = mapRawgToGame(detail);
+
+  const boxArtUrl = await getBoxArtUrl(detail.name);
+  if (boxArtUrl) newGame.coverImageUrl = boxArtUrl;
+
   await db.insert(games).values(newGame);
 
   redirect(`/admin/games/new?added=${encodeURIComponent(newGame.title)}`);
