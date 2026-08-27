@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { getGameLibrary } from "@/lib/games/queryGames";
 import { getCurrentUser } from "@/lib/auth/current-user";
-import { GameCard } from "@/components/GameCard";
-import { GameFilters } from "@/components/GameFilters";
+import { GameLibrary } from "@/components/GameLibrary";
 
 type SearchParams = {
   q?: string;
@@ -18,17 +17,10 @@ export default async function Home({
   searchParams: Promise<SearchParams>;
 }) {
   const params = await searchParams;
-  const sort = params.sort === "rank" ? "rank" : "stars";
 
   const [user, { games, genres, platforms }] = await Promise.all([
     getCurrentUser(),
-    getGameLibrary({
-      q: params.q,
-      genre: params.genre,
-      platform: params.platform,
-      stars: params.stars,
-      sort,
-    }),
+    getGameLibrary(),
   ]);
 
   return (
@@ -52,19 +44,18 @@ export default async function Home({
         )}
       </div>
 
-      <GameFilters genres={genres} platforms={platforms} current={{ ...params, sort }} />
-
-      {games.length === 0 ? (
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          No games match those filters yet.
-        </p>
-      ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {games.map((game, index) => (
-            <GameCard key={game.id} game={game} index={index} />
-          ))}
-        </div>
-      )}
+      <GameLibrary
+        games={games}
+        genres={genres}
+        platforms={platforms}
+        initial={{
+          q: params.q,
+          genre: params.genre,
+          platform: params.platform,
+          stars: params.stars,
+          sort: params.sort === "rank" ? "rank" : "stars",
+        }}
+      />
     </main>
   );
 }
