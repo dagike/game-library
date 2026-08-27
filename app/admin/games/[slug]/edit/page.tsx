@@ -68,7 +68,7 @@ export default async function EditGamePage({
 
         <button
           type="submit"
-          className="rounded bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400"
+          className="rounded bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
         >
           Save
         </button>

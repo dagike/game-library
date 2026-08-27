@@ -29,7 +29,7 @@ export default async function AdminPage() {
       <div className="flex gap-2">
         <Link
           href="/admin/games/new"
-          className="rounded bg-primary-600 px-3 py-2 text-center text-sm text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400"
+          className="rounded bg-primary-600 px-3 py-2 text-center text-sm text-white transition-colors hover:bg-primary-700 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
         >
           Add a game
         </Link>
