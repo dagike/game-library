@@ -23,7 +23,7 @@ export default async function GamePage({
   const [user, comments] = await Promise.all([getCurrentUser(), getCommentsForGame(game.id)]);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-10">
+    <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-10 animate-fade-in-up">
       <Link
         href="/"
         className="text-sm text-gray-500 transition-colors hover:text-primary-600 hover:underline dark:text-gray-400 dark:hover:text-primary-400"

@@ -14,7 +14,7 @@ export default async function AdminPage() {
   const allGames = await db.select().from(games).orderBy(asc(games.title));
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-4 px-4 py-10">
+    <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-4 px-4 py-10 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Admin</h1>
         <Link
@@ -29,7 +29,7 @@ export default async function AdminPage() {
       <div className="flex gap-2">
         <Link
           href="/admin/games/new"
-          className="rounded bg-primary-600 px-3 py-2 text-center text-sm text-white transition-colors hover:bg-primary-700 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
+          className="rounded bg-primary-600 px-3 py-2 text-center text-sm text-white transition hover:bg-primary-700 active:scale-95 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
         >
           Add a game
         </Link>

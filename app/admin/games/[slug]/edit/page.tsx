@@ -18,7 +18,7 @@ export default async function EditGamePage({
   if (!game) notFound();
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-6 px-4 py-10">
+    <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-6 px-4 py-10 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Edit {game.title}</h1>
         <Link href={`/games/${game.slug}`} className="text-sm text-gray-500 hover:underline dark:text-gray-400">
@@ -68,7 +68,7 @@ export default async function EditGamePage({
 
         <button
           type="submit"
-          className="rounded bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
+          className="rounded bg-primary-600 px-4 py-2 text-white transition hover:bg-primary-700 active:scale-95 dark:bg-primary-400 dark:text-gray-950 dark:hover:bg-primary-300"
         >
           Save
         </button>

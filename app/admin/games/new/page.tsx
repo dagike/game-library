@@ -14,7 +14,7 @@ export default async function NewGamePage({
   const { added, error } = await searchParams;
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 px-4 py-10">
+    <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 px-4 py-10 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Add a game</h1>
         <Link href="/admin" className="text-sm text-gray-600 underline dark:text-gray-400">

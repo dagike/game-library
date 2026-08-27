@@ -10,11 +10,12 @@ type Game = {
   manualRank: number | null;
 };
 
-export function GameCard({ game }: { game: Game }) {
+export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
   return (
     <Link
       href={`/games/${game.slug}`}
-      className="group flex flex-col overflow-hidden rounded border border-gray-200 transition-colors hover:border-primary-400 dark:border-gray-800 dark:hover:border-primary-600"
+      style={{ animationDelay: `${Math.min(index, 12) * 40}ms` }}
+      className="group flex animate-fade-in-up flex-col overflow-hidden rounded border border-gray-200 transition hover:-translate-y-1 hover:border-primary-400 hover:shadow-lg dark:border-gray-800 dark:hover:border-primary-600 dark:hover:shadow-primary-950/40"
     >
       <div className="relative aspect-[2/3] w-full bg-gray-100 dark:bg-gray-900">
         {game.coverImageUrl ? (

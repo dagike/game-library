@@ -35,9 +35,14 @@ export function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="fixed bottom-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-lg shadow-sm transition-colors hover:border-primary-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-primary-600"
+      className="fixed bottom-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-lg shadow-sm transition hover:-translate-y-0.5 hover:border-primary-400 hover:shadow-md active:scale-90 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-primary-600"
     >
-      <span aria-hidden="true">{isDark ? "☀️" : "🌙"}</span>
+      <span
+        aria-hidden="true"
+        className={`inline-block transition-transform duration-300 ease-out ${isDark ? "rotate-0" : "rotate-180"}`}
+      >
+        {isDark ? "☀️" : "🌙"}
+      </span>
     </button>
   );
 }

@@ -60,8 +60,8 @@ export default async function Home({
         </p>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {games.map((game) => (
-            <GameCard key={game.id} game={game} />
+          {games.map((game, index) => (
+            <GameCard key={game.id} game={game} index={index} />
           ))}
         </div>
       )}
