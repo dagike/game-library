@@ -15,7 +15,12 @@ export default async function AdminPage() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-lg flex-col gap-4 px-4 py-10">
-      <h1 className="text-2xl font-semibold">Admin</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Admin</h1>
+        <Link href="/" className="text-sm text-gray-500 hover:underline dark:text-gray-400">
+          ← Back to library
+        </Link>
+      </div>
       <p className="text-sm text-gray-600 dark:text-gray-400">Signed in as {user.email}.</p>
 
       <div className="flex gap-2">
