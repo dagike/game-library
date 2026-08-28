@@ -6,6 +6,17 @@ A personal web app for showing off favorite game titles: a public list of quick-
 - **Game data**: imported from the [RAWG API](https://rawg.io/apidocs) rather than typed in by hand.
 - **Access**: anyone can browse and comment; only the site owner (a single seeded account) can add/edit/delete games.
 
+## Screenshots
+
+**Library — real-time search, filters, and sorting**
+![Game library list page](images/library.png)
+
+**Admin — add a game by searching RAWG**
+![Searching RAWG to add a game](images/search.png)
+
+**Admin dashboard**
+![Admin dashboard listing owned games](images/admin.png)
+
 ## Getting Started
 
 ```bash
