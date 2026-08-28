@@ -53,7 +53,7 @@ export default async function Home({
           genre: params.genre,
           platform: params.platform,
           stars: params.stars,
-          sort: params.sort === "rank" ? "rank" : "stars",
+          sort: params.sort === "stars" ? "stars" : "rank",
         }}
       />
     </main>

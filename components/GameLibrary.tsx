@@ -26,7 +26,7 @@ export function GameLibrary({
   const [platform, setPlatform] = useState(initial.platform ?? "");
   const [stars, setStars] = useState(initial.stars ?? "");
   const [sort, setSort] = useState<NonNullable<GameListFilters["sort"]>>(
-    initial.sort === "rank" ? "rank" : "stars",
+    initial.sort === "stars" ? "stars" : "rank",
   );
 
   // Debounce only the free-text field so the grid (and URL) settle shortly
@@ -51,7 +51,7 @@ export function GameLibrary({
     if (filters.genre) params.set("genre", filters.genre);
     if (filters.platform) params.set("platform", filters.platform);
     if (filters.stars) params.set("stars", filters.stars);
-    if (filters.sort !== "stars") params.set("sort", filters.sort!);
+    if (filters.sort !== "rank") params.set("sort", filters.sort!);
     const query = params.toString();
     const url = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.replaceState(null, "", url);
@@ -112,8 +112,8 @@ export function GameLibrary({
           onChange={(e) => setSort(e.target.value === "rank" ? "rank" : "stars")}
           className="rounded border border-gray-300 px-2 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
         >
-          <option value="stars">Sort by star rating</option>
           <option value="rank">Sort by my ranking</option>
+          <option value="stars">Sort by star rating</option>
         </select>
       </div>
 

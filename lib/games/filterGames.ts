@@ -37,13 +37,21 @@ export function filterAndSortGames<T extends FilterableGame>(games: T[], filters
   }
 
   return [...filtered].sort((a, b) => {
-    if (filters.sort === "rank") {
-      if (a.manualRank == null) return 1;
-      if (b.manualRank == null) return -1;
-      return a.manualRank - b.manualRank;
-    }
-    if (a.starRating == null) return 1;
-    if (b.starRating == null) return -1;
-    return b.starRating - a.starRating;
+    if (filters.sort === "stars") return compareByStars(a, b);
+
+    // Default: my ranking first (ascending), then fall back to star rating
+    // for anything I haven't ranked yet.
+    const aRanked = a.manualRank != null;
+    const bRanked = b.manualRank != null;
+    if (aRanked && bRanked) return a.manualRank! - b.manualRank!;
+    if (aRanked !== bRanked) return aRanked ? -1 : 1;
+    return compareByStars(a, b);
   });
+}
+
+function compareByStars(a: FilterableGame, b: FilterableGame): number {
+  if (a.starRating == null && b.starRating == null) return 0;
+  if (a.starRating == null) return 1;
+  if (b.starRating == null) return -1;
+  return b.starRating - a.starRating;
 }
